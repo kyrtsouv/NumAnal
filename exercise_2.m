@@ -2,14 +2,47 @@ clc
 
 syms x
 f = symfun(94*cos(x)^3-24*cos(x)+177*sin(x)^2-108*sin(x)^4-72*cos(x)^3*sin(x)^2-65,x);
+error = 0.5*10^-5;
 
-% fplot(f,[0,3])
-% grid on
+modifiedNewtonRoots = [
+    modifiedNewton(f,error,0.8);
+    modifiedNewton(f,error,1.1);
+    modifiedNewton(f,error,2.4)
+    ];
 
-maximum_error = 0.5*10^-5;
+newtonRoots = [
+    newton(f,error,0.8);
+    newton(f,error,1.1);
+    newton(f,error,2.4)
+    ];
 
-modifiedNewtonRoots = [modifiedNewton(f,maximum_error,0.69,0.89,0.89) ; modifiedNewton(f,maximum_error,0.9,1.1,1.1); modifiedNewton(f,maximum_error,2.2,2.4,2.4)]
+modifiedBisectionRoots = [
+    modifiedBisection(f,error,0.69,0.89);
+    modifiedBisection(f,error,0.9,1.1);
+    modifiedBisection(f,error,2.2,2.4)
+    ];
 
-modifiedBisectionRoots = [modifiedBisection(f,maximum_error,0.69,0.89); modifiedBisection(f,maximum_error,0.9,1.1); modifiedBisection(f,maximum_error,2.2,2.4)]
+bisectionRoots = [
+    bisection(f,error,0.69,0.89);
+    bisection(f,error,0.9,1.1);
+    bisection(f,error,2.2,2.4)
+    ];
 
-modifiedSecantRoots = [modifiedSecant(f,maximum_error,0.69,0.89,0.79) ; modifiedSecant(f,maximum_error,0.9,1.2,1.1); modifiedSecant(f,maximum_error,2.2,2.4,2.3)]
+% modifiedSecantRoots = [
+%     modifiedSecant(f,maximum_error,0.6,0.7,0.8);
+%     modifiedSecant(f,maximum_error,1.2,1.3,1.4);
+%     modifiedSecant(f,maximum_error,2.1,2.4,2.7)
+%     ]
+
+secantRoots = [
+    secant(f,maximum_error,0.6,0.7);
+    secant(f,maximum_error,1.2,1.3);
+    secant(f,maximum_error,2.1,2.4)
+    ]
+
+
+repsForModifiedBisection = zeros(10,1);
+for n=1:10
+    temp = modifiedBisection(f,error,0.69,0.89);
+    repsForModifiedBisection(n) = temp(1);
+end
