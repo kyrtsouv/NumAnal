@@ -9,8 +9,9 @@ if double(f(approximation))~= 0
         start = approximation;
     end
     newApproximation = rand*(finish-start)+start;
-    
-    while abs(double(newApproximation-approximation)) >= error
+    reps = 2;
+
+    while abs(newApproximation-approximation) >= error
         approximation = newApproximation;
         if f(approximation)*f(start)<0
             finish = approximation;

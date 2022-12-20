@@ -1,12 +1,12 @@
 function [res] = modifiedSecant(f,error,approx1,approx2,approx3)
 
-syms x y z;
+syms x0 x1 x2;
 
-q(x,y) = f(x)/f(y);
-r(y,z) = f(z)/f(y);
-s(x,z) = f(z)/f(x);
+q(x0,x1) = f(x0)/f(x1);
+r(x1,x2) = f(x2)/f(x1);
+s(x0,x2) = f(x2)/f(x0);
 
-phi(x,y,z) = z - (r(y,z)*(r(y,z)-q(x,y))*(z-y)+(1-r(y,z)*s(x,z)*(z-x)))/((q(x,y)-1)*(r(y,z)-1)*(s(x,z)-1));
+phi(x0,x1,x2) = x2-(r(x1,x2)*(r(x1,x2)-q(x0,x1))*(x2-x1) + (1-r(x1,x2))*s(x0,x2)*(x2-x0))/((q(x0,x1)-1)*(r(x1,x2)-1)*(s(x0,x2)-1));
 
 reps = 1;
 newApproximation = double(phi(approx1,approx2,approx3));

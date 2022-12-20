@@ -10,16 +10,22 @@ modifiedNewtonRoots = [
     modifiedNewton(f,error,2.4)
     ];
 
-newtonRoots = [
-    newton(f,error,0.8);
-    newton(f,error,1.1);
-    newton(f,error,2.4)
-    ];
-
 modifiedBisectionRoots = [
     modifiedBisection(f,error,0.69,0.89);
     modifiedBisection(f,error,0.9,1.1);
     modifiedBisection(f,error,2.2,2.4)
+    ];
+
+modifiedSecantRoots = [
+    modifiedSecant(f,error,0.6,0.7,0.8);
+    modifiedSecant(f,error,1.2,1.3,1.4);
+    modifiedSecant(f,error,2.1,2.4,2.7)
+    ];
+
+newtonRoots = [
+    newton(f,error,0.8);
+    newton(f,error,1.1);
+    newton(f,error,2.4)
     ];
 
 bisectionRoots = [
@@ -28,21 +34,23 @@ bisectionRoots = [
     bisection(f,error,2.2,2.4)
     ];
 
-% modifiedSecantRoots = [
-%     modifiedSecant(f,maximum_error,0.6,0.7,0.8);
-%     modifiedSecant(f,maximum_error,1.2,1.3,1.4);
-%     modifiedSecant(f,maximum_error,2.1,2.4,2.7)
-%     ]
-
 secantRoots = [
-    secant(f,maximum_error,0.6,0.7);
-    secant(f,maximum_error,1.2,1.3);
-    secant(f,maximum_error,2.1,2.4)
-    ]
-
+    secant(f,error,0.6,0.7);
+    secant(f,error,1.2,1.3);
+    secant(f,error,2.1,2.4)
+    ];
 
 repsForModifiedBisection = zeros(10,1);
 for n=1:10
     temp = modifiedBisection(f,error,0.69,0.89);
     repsForModifiedBisection(n) = temp(1);
 end
+
+differenceOfConvergenceSpeedOfBisection = modifiedBisectionRoots-bisectionRoots;
+differenceOfConvergenceSpeedOfBisection = differenceOfConvergenceSpeedOfBisection(:,1);
+
+differenceOfConvergenceSpeedOfNewton = modifiedNewtonRoots-newtonRoots;
+differenceOfConvergenceSpeedOfNewton = differenceOfConvergenceSpeedOfNewton(:,1);
+
+differenceOfConvergenceSpeedOfSecant = modifiedSecantRoots-secantRoots;
+differenceOfConvergenceSpeedOfSecant = differenceOfConvergenceSpeedOfSecant(:,1);
