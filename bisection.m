@@ -11,6 +11,6 @@ for reps=1:ceil(log((b-a)/error)/log(2))
         a = approximation;
     end
 end
-res = [reps approximation];
+res = [approximation reps];
 
 end
