@@ -2,7 +2,7 @@ function [L] = cholesky(A)
 
 n = length(A);
 
-L = eye(n);
+L = zeros(n);
 for i=1:n
     for j=1:i-1
         sum = 0;

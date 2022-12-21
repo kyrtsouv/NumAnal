@@ -13,16 +13,16 @@ error = 0.5*10^-5;
 bisectionRoots = [
     bisection(f,error,-2,-1);
     bisection(f,error,1.3,2)
-    ]
+    ];
 
 newtonRoots = [
     newton(f,error,-2);
     newton(f,error,-0.5);
     newton(f,error,2)
-    ]
+    ];
 
 secantRoots = [
     secant(f,error,-2,-1);
     secant(f,error,-1,1);
     secant(f,error,1.3,2)
-    ]
+    ];

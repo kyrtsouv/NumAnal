@@ -40,17 +40,17 @@ secantRoots = [
     secant(f,error,2.1,2.4)
     ];
 
-repsForModifiedBisection = zeros(10,1);
+repsOfModifiedBisection = zeros(10,1);
 for n=1:10
     temp = modifiedBisection(f,error,0.69,0.89);
-    repsForModifiedBisection(n) = temp(1);
+    repsOfModifiedBisection(n) = temp(2);
 end
 
 differenceOfConvergenceSpeedOfBisection = modifiedBisectionRoots-bisectionRoots;
-differenceOfConvergenceSpeedOfBisection = differenceOfConvergenceSpeedOfBisection(:,1);
+differenceOfConvergenceSpeedOfBisection = differenceOfConvergenceSpeedOfBisection(:,2);
 
 differenceOfConvergenceSpeedOfNewton = modifiedNewtonRoots-newtonRoots;
-differenceOfConvergenceSpeedOfNewton = differenceOfConvergenceSpeedOfNewton(:,1);
+differenceOfConvergenceSpeedOfNewton = differenceOfConvergenceSpeedOfNewton(:,2);
 
 differenceOfConvergenceSpeedOfSecant = modifiedSecantRoots-secantRoots;
-differenceOfConvergenceSpeedOfSecant = differenceOfConvergenceSpeedOfSecant(:,1);
+differenceOfConvergenceSpeedOfSecant = differenceOfConvergenceSpeedOfSecant(:,2);

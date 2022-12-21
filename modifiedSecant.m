@@ -17,5 +17,5 @@ while abs(double(f(newApproximation)))>=error
     newApproximation = double(phi(approx1,approx2,approx3));
     reps=reps+1;
 end
-res = [reps newApproximation];
+res = [newApproximation reps];
 end

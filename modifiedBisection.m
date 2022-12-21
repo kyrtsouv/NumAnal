@@ -10,7 +10,7 @@ if double(f(approximation))~= 0
     end
     newApproximation = rand*(finish-start)+start;
     reps = 2;
-
+    
     while abs(newApproximation-approximation) >= error
         approximation = newApproximation;
         if f(approximation)*f(start)<0
@@ -23,5 +23,5 @@ if double(f(approximation))~= 0
     end
     approximation = newApproximation;
 end
-res = [reps approximation];
+res = [approximation reps];
 end

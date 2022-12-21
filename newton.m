@@ -12,12 +12,12 @@ while difference>=error
     newApproximation = double(phi(newApproximation));
     if abs(newApproximation-approximation)>difference
         reps = 0;
-        approximation = NaN;
+        newApproximation = NaN;
         break
     end
     difference = abs(newApproximation-approximation);
     reps=reps+1;
 end
 
-res = [approximation reps];
+res = [newApproximation reps];
 end

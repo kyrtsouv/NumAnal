@@ -1,15 +1,11 @@
 function [x] = gauss(A,b)
 
-s = size(b);
-if s(1,1) == 1
-    b = transpose(b);
-end
-
 U = A;
 n = length(U);
 P = eye(n);
 L = P;
 
+%drive
 for k = 1:n
     max = abs(U(k,k));
     maxRow = k;
@@ -28,6 +24,7 @@ for k = 1:n
     P(maxRow,:) = temp;
 end
 
+%decomposition in L and U
 for k = 1:n
     for l = k+1:n
         m = U(l,k)/U(k,k);
@@ -36,6 +33,7 @@ for k = 1:n
     end
 end
 
+%forward substitution for y
 z = P*b;
 y = zeros(n,1);
 y(1) =z (1) / L(1,1);
@@ -47,7 +45,7 @@ for k = 2:n
     y(k) = (z(k) - sum) / L(k,k);
 end
 
-
+%backward substitution for x
 x = zeros(n,1);
 x(n) = y(n) / U(n,n);
 for k = n-1:-1:1
