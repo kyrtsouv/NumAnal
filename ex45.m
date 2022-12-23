@@ -1,5 +1,6 @@
 clc
 syms x
+error = 1/2*10^-5;
 A = [
     0 1 0 0 0 0 0 0 1 0 0 0 0 0 0;
     0 0 1 0 1 0 1 0 0 0 0 0 0 0 0;
@@ -19,7 +20,6 @@ A = [
     ];
 n = length(A);
 G = zeros(size(A));
-error = 1/2*10^-5;
 q = 0.15;
 for i=1:n
     for j=1:n
